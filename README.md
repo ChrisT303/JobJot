@@ -12,9 +12,9 @@ To get started with the application, follow these steps:
 3. Create a .env file in the root directory and set the following environment variables:
 
 
-`MONGODB_URI=<your MongoDB connection string>`
-`JWT_SECRET=<a secret key for JSON Web Tokens>`
-`JWT_LIFETIME=<Your time limit>`
+* `MONGODB_URI=<your MongoDB connection string>`
+* `JWT_SECRET=<a secret key for JSON Web Tokens>`
+* `JWT_LIFETIME=<Your time limit>`
 
 4. Start the server by running npm run server in the root directory.
 
