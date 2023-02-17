@@ -1,10 +1,13 @@
-
+import LandingPage from "./pages/LandIngPage";
 
 function App() {
   return (
-    <h1 className="text-4xl font-bold underline">
+    <div>
+    <h1>
     Hello world!
   </h1>
+    <LandingPage />
+  </div>
   );
 }
 
