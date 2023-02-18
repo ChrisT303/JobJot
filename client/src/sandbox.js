@@ -5,10 +5,10 @@ import LandingImage from "../assets/images/LandingImage.svg";
 const LandingPage = () => {
   return (
     <main>
-      <nav className="w-var(--fluid-width) max-w-var(--max-width) mx-auto h-var(--nav-height) flex items-center">
+      <nav className=" mx-auto flex items-center">
         <img src={JobJotLogo2} alt="JobJot Logo" className="logo" />
       </nav>
-      <div className="container min-h-screen grid items-center md:grid grid-cols-2 gap-x-3rem" style={{ gridTemplateRows: 'calc(var(--nav-height) + 3rem) 1fr' }}>
+      <div className="min-h-screen grid items-center md:grid grid-cols-2 gap-x-3rem" style={{ gridTemplateRows: 'calc(var(--nav-height) + 3rem) 1fr' }}>
         <div className="info">
           <h1 className="font-bold">
             App for<span className='text-[#abd699]'> tracking</span> Job apps
