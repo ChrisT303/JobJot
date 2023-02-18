@@ -5,7 +5,11 @@ import mainImg from '../assets/images/mainLandingPageImg.svg'
 
 const LandingPage = () => {
   return (
-    <h4>LandingPage</h4>
+    <main>LandingPage
+        <nav>
+         <img src={JobJotLogo} alt="JobJot Logo" className='logo'/>
+        </nav>
+    </main>
   )
 }
 
