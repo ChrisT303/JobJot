@@ -8,7 +8,6 @@ const LandingPage = () => {
     <main>
       <div class="mx-auto my-4">
         <nav className="flex mx-4 sm:mx-6 md:mx-8 items-center">
-        {/* <img src={JobJotLogo2} alt="JobJot Logo" className="logo" /> */}
         <Logo />
         </nav>
         <div
