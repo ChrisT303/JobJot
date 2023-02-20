@@ -1,61 +1,65 @@
-import React, { useState } from "react";
-import { Logo } from "../components";
+import React, { useState, useEffect } from "react";
+import { Logo, FormRow, AlertMessage } from "../components";
+
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  isRegistered: true,
+  showAlert: false,
+};
 
 const RegisterPage = () => {
+  const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
+
+  const handleChange = (e) => {
+    console.log(e.target);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border-t-4 border-[#75c9b7]">
         <div className="flex flex-col items-center mb-6">
           <Logo />
-          <h2 className="text-2xl font-medium text-center mt-2">
+          <h2 className="text-2xl font-medium text-center mt-6">
             {showLogin ? "Login" : "Register"}
           </h2>
+          {values.showAlert && <AlertMessage />}
         </div>
-        <form>
-  {showLogin ? null : (
-    <div className="mb-4">
-      <label htmlFor="name" className="block font-medium mb-2">
-        Name
-      </label>
-      <input
-        type="text"
-        id="name"
-        className="w-full border-gray-400 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#c7ddcc] focus:border-transparent shadow-lg"
-        required
-      />
-    </div>
-  )}
-  <div className="mb-4">
-    <label htmlFor="email" className="block font-medium mb-2">
-      Email
-    </label>
-    <input
-      type="email"
-      id="email"
-      className="w-full border-gray-400 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#c7ddcc] focus:border-transparent shadow-lg"
-      required
-    />
-  </div>
-  <div className="mb-6">
-    <label htmlFor="password" className="block font-medium mb-2">
-      Password
-    </label>
-    <input
-      type="password"
-      id="password"
-      className="w-full border-gray-400 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#c7ddcc] focus:border-transparent shadow-lg"
-      required
-    />
-  </div>
-  <button
-    type="submit"
-    className="w-full bg-[#ffe26a] hover:bg-[#f7d13c] text-white py-2 px-4 rounded-md mb-4"
-  >
-    {showLogin ? "Login" : "Register"}
-  </button>
-</form>
+        <form onSubmit={handleSubmit}>
+          {showLogin ? null : (
+            <FormRow
+              type="text"
+              name="Name"
+              value={values.name}
+              handleChange={handleChange}
+            />
+          )}
+          <FormRow
+            type="email"
+            name="Email"
+            value={values.email}
+            handleChange={handleChange}
+          />
+          <FormRow
+            type="password"
+            name="Password"
+            value={values.password}
+            handleChange={handleChange}
+          />
+          <button
+            type="submit"
+            className="w-full bg-[#ffe26a] hover:bg-[#f7d13c] text-white py-2 px-4 rounded-md mb-4"
+          >
+            {showLogin ? "Login" : "Register"}
+          </button>
+        </form>
 
         <div className="text-center">
           {showLogin ? (
