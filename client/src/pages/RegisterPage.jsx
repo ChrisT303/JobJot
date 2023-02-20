@@ -13,15 +13,20 @@ const RegisterPage = () => {
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
 
-  const { isLoading, showAlert } = useGlobalContext();
+  const { isLoading, showAlert, displayAlert } = useGlobalContext();
 
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({ ...values, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isRegistered } = values;
+    if ((!isRegistered && !name) || !email || !password) {
+      displayAlert();
+      return;
+    }
+    console.log(values)
   };
 
   return (
@@ -41,6 +46,7 @@ const RegisterPage = () => {
               name="Name"
               value={values.name}
               handleChange={handleChange}
+              id="name"
             />
           )}
           <FormRow
@@ -48,12 +54,14 @@ const RegisterPage = () => {
             name="Email"
             value={values.email}
             handleChange={handleChange}
+            id="email"
           />
           <FormRow
             type="password"
             name="Password"
             value={values.password}
             handleChange={handleChange}
+            id="password"
           />
           <button
             type="submit"
