@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Logo, FormRow, AlertMessage } from "../components";
+import { useGlobalContext } from "../context/context";
 
 const initialState = {
   name: "",
   email: "",
   password: "",
   isRegistered: true,
-  showAlert: false,
 };
 
 const RegisterPage = () => {
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
+
+  const { isLoading, showAlert } = useGlobalContext();
 
   const handleChange = (e) => {
     console.log(e.target);
@@ -30,7 +32,7 @@ const RegisterPage = () => {
           <h2 className="text-2xl font-medium text-center mt-6">
             {showLogin ? "Login" : "Register"}
           </h2>
-          {values.showAlert && <AlertMessage />}
+          {showAlert && <AlertMessage />}
         </div>
         <form onSubmit={handleSubmit}>
           {showLogin ? null : (
