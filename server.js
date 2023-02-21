@@ -5,12 +5,20 @@ dotenv.config();
 
 import connectDB from "./db/connection.js";
 
+import authRoutes from "./routes/authRoutes.js";
+import jobsRoutes from "./routes/jobsRoutes.js";
+
 import notFoundMiddleware from "./middleware/notFound.js";
 import errorHandlerMiddleware from "./middleware/error.js";
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/jobs", jobsRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
