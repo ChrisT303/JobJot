@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
 
-  const { isLoading, showAlert, displayAlert } = useGlobalContext();
+  const { isLoading, showAlert, displayAlert, registerUser } = useGlobalContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
@@ -25,6 +25,12 @@ const RegisterPage = () => {
     if ((!isRegistered && !name) || !email || !password) {
       displayAlert();
       return;
+    }
+    const newUser = { name, email, password };
+    if(isRegistered) {
+      console.log("already registered")
+    } else{
+      registerUser(newUser)
     }
     console.log(values)
   };
@@ -66,6 +72,7 @@ const RegisterPage = () => {
           <button
             type="submit"
             className="w-full bg-[#ffe26a] hover:bg-[#f7d13c] text-white py-2 px-4 rounded-md mb-4"
+            disabled={isLoading}
           >
             {showLogin ? "Login" : "Register"}
           </button>
