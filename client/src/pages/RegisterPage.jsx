@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Logo, FormRow, AlertMessage } from "../components";
 import { useGlobalContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -13,7 +14,10 @@ const RegisterPage = () => {
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
 
-  const { isLoading, showAlert, displayAlert, registerUser } = useGlobalContext();
+  const navigate = useNavigate();
+
+  const { user, isLoading, showAlert, displayAlert, registerUser } =
+    useGlobalContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
@@ -27,9 +31,17 @@ const RegisterPage = () => {
       return;
     }
     const newUser = { name, email, password };
- 
+
     registerUser(newUser);
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
