@@ -22,17 +22,13 @@ const RegisterPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, password, isRegistered } = values;
-    if ((!isRegistered && !name) || !email || !password) {
+    if (!name || !email || !password) {
       displayAlert();
       return;
     }
     const newUser = { name, email, password };
-    if(isRegistered) {
-      console.log("already registered")
-    } else{
-      registerUser(newUser)
-    }
-    console.log(values)
+ 
+    registerUser(newUser);
   };
 
   return (
