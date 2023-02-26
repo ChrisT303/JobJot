@@ -13,16 +13,19 @@ const initialState = {
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
-  const [showLogin, setShowLogin] = useState(false);
 
   const { user, isLoading, showAlert, displayAlert, registerUser, loginUser } =
     useGlobalContext();
+
+  const toggleRegistered = () => {
+    setValues({ ...values, isRegistered: !values.isRegistered });
+  };
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const { name, email, password, isRegistered } = values;
     if (!name || !email || !password) {
@@ -51,12 +54,12 @@ const RegisterPage = () => {
         <div className="flex flex-col items-center mb-6">
           <Logo />
           <h2 className="text-2xl font-medium text-center mt-6">
-            {showLogin ? "Login" : "Register"}
+            {values.isRegistered ? "Login" : "Register"}
           </h2>
           {showAlert && <AlertMessage />}
         </div>
-        <form onSubmit={handleSubmit}>
-          {showLogin ? null : (
+        <form onSubmit={handleRegister}>
+          {!values.isRegistered && (
             <FormRow
               type="text"
               name="Name"
@@ -84,17 +87,17 @@ const RegisterPage = () => {
             className="w-full bg-[#ffe26a] hover:bg-[#f7d13c] text-white py-2 px-4 rounded-md mb-4"
             disabled={isLoading}
           >
-            {showLogin ? "Login" : "Register"}
+            {values.isRegistered ? "Login" : "Register"}
           </button>
         </form>
 
         <div className="text-center">
-          {showLogin ? (
+          {values.isRegistered ? (
             <>
               <span className="text-gray-600">Don't have an account?</span>
               <button
                 className="text-[#75c9b7] underline ml-1"
-                onClick={() => setShowLogin(false)}
+                onClick={toggleRegistered}
               >
                 Register
               </button>
@@ -104,7 +107,7 @@ const RegisterPage = () => {
               <span className="text-gray-600">Already have an account?</span>
               <button
                 className="text-[#75c9b7] underline ml-1"
-                onClick={() => setShowLogin(true)}
+                onClick={toggleRegistered}
               >
                 Login
               </button>
