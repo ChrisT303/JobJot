@@ -11,10 +11,9 @@ const initialState = {
 };
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
-
-  const navigate = useNavigate();
 
   const { user, isLoading, showAlert, displayAlert, registerUser } =
     useGlobalContext();
@@ -36,12 +35,12 @@ const RegisterPage = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user.token) {
       setTimeout(() => {
         navigate("/");
       }, 3000);
     }
-  }, [user, navigate]);
+  }, [user.token, navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
