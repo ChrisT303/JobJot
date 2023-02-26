@@ -31,7 +31,7 @@ const login = async (req, res) => {
   if (!email || !password) {
     throw new BadRequestError("Please provide all fields");
   }
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ email }).select("+password");
   if (!user) {
     throw new unAuthenticatedError("Invalid credentials");
   }
@@ -40,7 +40,9 @@ const login = async (req, res) => {
   if (!doPasswordsMatch) {
     throw new unAuthenticatedError("Invalid credentials");
   }
-  res.send("Login");
+  const token = user.JWTToken();
+  user.password = undefined;
+  res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
 
 const updateUser = async (req, res) => {

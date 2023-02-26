@@ -15,7 +15,7 @@ const RegisterPage = () => {
   const [values, setValues] = useState(initialState);
   const [showLogin, setShowLogin] = useState(false);
 
-  const { user, isLoading, showAlert, displayAlert, registerUser } =
+  const { user, isLoading, showAlert, displayAlert, registerUser, loginUser } =
     useGlobalContext();
 
   const handleChange = (e) => {
@@ -30,17 +30,20 @@ const RegisterPage = () => {
       return;
     }
     const newUser = { name, email, password };
-
-    registerUser(newUser);
+    if (isRegistered) {
+      loginUser(newUser);
+    } else {
+      registerUser(newUser);
+    }
   };
 
   useEffect(() => {
-    if (user.token) {
+    if (user) {
       setTimeout(() => {
         navigate("/");
       }, 3000);
     }
-  }, [user.token, navigate]);
+  }, [user, navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

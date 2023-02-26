@@ -8,6 +8,9 @@ import {
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
 } from "./actions";
 
 const user = localStorage.getItem("token");
@@ -72,12 +75,18 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const loginUser = async (currentUser) => {
+    console.log(currentUser);
+}
+
   return (
-    <GlobalContext.Provider value={{ ...state, displayAlert, registerUser }}>
+    <GlobalContext.Provider value={{ ...state, displayAlert, registerUser, loginUser }}>
       {children}
     </GlobalContext.Provider>
   );
 };
+
+
 
 const useGlobalContext = () => {
   return useContext(GlobalContext);
