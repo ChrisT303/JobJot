@@ -28,15 +28,15 @@ const RegisterPage = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const { name, email, password, isRegistered } = values;
-    if (!name || !email || !password) {
+    if ((!isRegistered && !name) || !email || !password) {
       displayAlert();
       return;
     }
-    const newUser = { name, email, password };
+    const currentUser = { name, email, password };
     if (isRegistered) {
-      loginUser(newUser);
+      loginUser(currentUser);
     } else {
-      registerUser(newUser);
+      registerUser(currentUser);
     }
   };
 

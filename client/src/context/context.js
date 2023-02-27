@@ -13,9 +13,9 @@ import {
   LOGIN_ERROR,
 } from "./actions";
 
-const user = localStorage.getItem("token");
+const user = localStorage.getItem("user");
 const token = localStorage.getItem("token");
-const userLocation = localStorage.getItem("token");
+const userLocation = localStorage.getItem("location");
 
 const initialState = {
   isLoading: false,
@@ -59,14 +59,13 @@ const AppProvider = ({ children }) => {
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_START });
     try {
-      console.log("Making axios request with data:", currentUser);
       const response = await axios.post("/api/v1/auth/register", currentUser);
-      console.log("Response data:", response.data);
-      const { token, user, location } = response.data;
+    //   console.log(response)
+      const { user, token, location } = response.data;
       dispatch({ type: REGISTER_SUCCESS, payload: { token, user, location } });
       addUserLocalStorage({ user, token, location });
     } catch (error) {
-      console.log("Error:", error);
+    //   console.log(error.response);
       dispatch({
         type: REGISTER_ERROR,
         payload: { msg: error.response.data.msg },
