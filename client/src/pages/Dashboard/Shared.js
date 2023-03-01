@@ -10,7 +10,7 @@ const Shared = () => {
           <LargeMenu />
         </div>
         <div className="order-3 md:order-2 flex-1 flex flex-col">
-          <div className="h-24 md:hidden">
+          <div className="h-24  bg-gray-200 md:hidden">
             <SmallMenu />
           </div>
           <Navigation className="h-24 md:h-6rem" />
