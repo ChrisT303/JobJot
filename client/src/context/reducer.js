@@ -7,6 +7,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  SIDEBAR_TOGGLE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -80,6 +81,12 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: "danger",
       alertMessage: action.payload.msg,
+    };
+  }
+  if (action.type === SIDEBAR_TOGGLE) {
+    return {
+      ...state,
+      sideBarOpen: !state.sideBarOpen,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
