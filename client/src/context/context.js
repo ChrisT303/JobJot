@@ -12,6 +12,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   SIDEBAR_TOGGLE,
+  USER_LOGOUT,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -96,8 +97,13 @@ const toggleSidebar = () => {
     dispatch({ type: SIDEBAR_TOGGLE });
 };
 
+const userLogout = () => {
+    dispatch({ type: USER_LOGOUT });
+    removeUserLocalStorage();
+}
+
   return (
-    <GlobalContext.Provider value={{ ...state, displayAlert, registerUser, loginUser, toggleSidebar }}>
+    <GlobalContext.Provider value={{ ...state, displayAlert, registerUser, loginUser, toggleSidebar, userLogout }}>
       {children}
     </GlobalContext.Provider>
   );
@@ -109,4 +115,4 @@ const useGlobalContext = () => {
   return useContext(GlobalContext);
 };
 
-export { AppProvider, GlobalContext, useGlobalContext };
+export { AppProvider, GlobalContext, useGlobalContext, initialState };

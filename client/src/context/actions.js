@@ -9,3 +9,4 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const SIDEBAR_TOGGLE = "SIDEBAR_TOGGLE";
+export const USER_LOGOUT = "USER_LOGOUT";

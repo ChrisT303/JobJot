@@ -8,7 +8,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   SIDEBAR_TOGGLE,
+  USER_LOGOUT,
 } from "./actions";
+
+import { initialState } from "./context";
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -87,6 +90,15 @@ const reducer = (state, action) => {
     return {
       ...state,
       sideBarOpen: !state.sideBarOpen,
+    };
+  }
+  if (action.type === USER_LOGOUT) {
+    return {
+      ...initialState,
+      user: null,
+      token: null,
+      userLocation: '',
+      jobLocation: '',
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
