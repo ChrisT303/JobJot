@@ -6,14 +6,15 @@ import Logo from "./Logo";
 import { CgCloseO } from "react-icons/cg";
 
 const MobileOverlay = () => {
+    const {sideBarOpen, toggleSidebar} = useGlobalContext();
   return (
     <div className="block lg:hidden">
-      <div className="overlay z-99 opacity-100">
+      <div className={sideBarOpen ? "overlay z-99 opacity-100": "overlay"}>
         <div className="panel w-[90vw] h-[95vh]">
           <button
             type="button"
             className="overlay-btn absolute top-10 left-10"
-            onClick={() => console.log("toggle")}
+            onClick={toggleSidebar}
           >
             <CgCloseO />
           </button>
@@ -28,3 +29,4 @@ const MobileOverlay = () => {
 };
 
 export default MobileOverlay;
+

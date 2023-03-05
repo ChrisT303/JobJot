@@ -11,7 +11,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  SIDEBAR_TOGGLE,
+  TOGGLE_SIDEBAR,
   USER_LOGOUT,
 } from "./actions";
 
@@ -94,7 +94,7 @@ const AppProvider = ({ children }) => {
 }
 
 const toggleSidebar = () => {
-    dispatch({ type: SIDEBAR_TOGGLE });
+    dispatch({ type: TOGGLE_SIDEBAR });
 };
 
 const userLogout = () => {

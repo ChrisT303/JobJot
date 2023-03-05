@@ -7,7 +7,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  SIDEBAR_TOGGLE,
+  TOGGLE_SIDEBAR,
   USER_LOGOUT,
 } from "./actions";
 
@@ -86,7 +86,7 @@ const reducer = (state, action) => {
       alertMessage: action.payload.msg,
     };
   }
-  if (action.type === SIDEBAR_TOGGLE) {
+  if (action.type === TOGGLE_SIDEBAR) {
     return {
       ...state,
       sideBarOpen: !state.sideBarOpen,
