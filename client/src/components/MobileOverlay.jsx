@@ -8,15 +8,18 @@ import { CgCloseO } from "react-icons/cg";
 const MobileOverlay = () => {
     const {showSidebar, toggleSidebar} = useGlobalContext();
 
- 
+    console.log("showSidebar:", showSidebar);
+    const handleOverlayClick = () => {
+      toggleSidebar();
+    };
   return (
-    <div className="block lg:hidden">
-      <div className={showSidebar? "overlay z-99 opacity-100": "overlay"}>
+    <div className="md:hidden">
+      <div className={showSidebar? "overlay": "hidden"}>
         <div className="panel w-[90vw] h-[95vh]">
           <button
             type="button"
             className="overlay-btn absolute top-10 left-10"
-            onClick={toggleSidebar}
+            onClick={handleOverlayClick}
           >
             <CgCloseO />
           </button>
