@@ -89,7 +89,7 @@ const reducer = (state, action) => {
   if (action.type === TOGGLE_SIDEBAR) {
     return {
       ...state,
-      sideBarOpen: !state.sideBarOpen,
+      showSidebar: !state.showSidebar,
     };
   }
   if (action.type === USER_LOGOUT) {

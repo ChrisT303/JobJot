@@ -28,7 +28,7 @@ const initialState = {
   token: token,
   userLocation: userLocation || "",
   jobLocation: userLocation || "",
-  sideBarOpen: false,
+  showSidebar: false,
 };
 
 const GlobalContext = React.createContext();
