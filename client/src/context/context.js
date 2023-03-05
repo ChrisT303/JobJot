@@ -94,8 +94,11 @@ const AppProvider = ({ children }) => {
 }
 
 const toggleSidebar = () => {
-    dispatch({ type: TOGGLE_SIDEBAR });
+  console.log("toggleSidebar called before state update, showSidebar is", state.showSidebar);
+  dispatch({ type: TOGGLE_SIDEBAR });
+  console.log("toggleSidebar called after state update, showSidebar is", state.showSidebar);
 };
+
 
 const userLogout = () => {
     dispatch({ type: USER_LOGOUT });

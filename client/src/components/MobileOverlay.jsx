@@ -7,6 +7,8 @@ import { CgCloseO } from "react-icons/cg";
 
 const MobileOverlay = () => {
     const {showSidebar, toggleSidebar} = useGlobalContext();
+
+ 
   return (
     <div className="block lg:hidden">
       <div className={showSidebar? "overlay z-99 opacity-100": "overlay"}>

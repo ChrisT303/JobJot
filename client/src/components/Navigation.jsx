@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 const Navigation = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, userLogout, user } = useGlobalContext();
+  const { toggleSidebar, userLogout, user} = useGlobalContext();
   return (
     <div className="h-24 lg:h-6rem flex items-center justify-between shadow-md w-full md:sticky md:top-0">
       <div className="flex items-center w-90vw">
@@ -30,9 +30,9 @@ const Navigation = () => {
           className="btn bg-[#bef8fd] px-4 py-2 rounded-md mr-2"
           onClick={() => setShowLogout(!showLogout)}
         >
-          <FaRegUserCircle class="inline-block mr-2" />
+          <FaRegUserCircle className="inline-block mr-2" />
           {user?.name}
-          <BiCaretDownCircle class="inline-block ml-2" />
+          <BiCaretDownCircle className="inline-block ml-2" />
         </button>
         <div
           className={
