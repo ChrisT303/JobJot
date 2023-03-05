@@ -6,15 +6,15 @@ import Logo from "./Logo";
 import { CgCloseO } from "react-icons/cg";
 
 const MobileOverlay = () => {
-    const {showSidebar, toggleSidebar} = useGlobalContext();
+  const { showSidebar, toggleSidebar } = useGlobalContext();
 
-    console.log("showSidebar:", showSidebar);
-    const handleOverlayClick = () => {
-      toggleSidebar();
-    };
+  const handleOverlayClick = () => {
+    toggleSidebar();
+  };
+
   return (
     <div className="md:hidden">
-      <div className={showSidebar? "overlay": "hidden"}>
+      <div className={showSidebar ? "overlay" : "hidden"}>
         <div className="panel w-[90vw] h-[95vh]">
           <button
             type="button"
@@ -26,7 +26,24 @@ const MobileOverlay = () => {
           <header>
             <Logo />
           </header>
-          <div className="pt-8 flex flex-col">nav links</div>
+          <div className="pt-8 flex flex-col">
+            {links.map((link) => {
+              const { id, path, text, icon } = link;
+              return (
+                <NavLink
+                key={id}
+                to={path}
+                className="flex items-center px-4 py-6 text-[#2cb1bc] hover:bg-[#bef8fd] hover:text-white text-2xl leading-6"
+                activeClassName="bg-[#bef8fd] text-white"
+                onClick={handleOverlayClick}
+              >
+                {icon}
+                <span className="ml-3">{text}</span>
+              </NavLink>
+              
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -34,4 +51,3 @@ const MobileOverlay = () => {
 };
 
 export default MobileOverlay;
-
