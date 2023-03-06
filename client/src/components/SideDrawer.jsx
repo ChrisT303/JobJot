@@ -3,11 +3,15 @@ import { useGlobalContext } from "../context/context";
 import Logo from "./Logo";
 import links from "../utils/links";
 import { NavLink } from "react-router-dom";
+import { GrFormClose } from "react-icons/gr";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 const SideDrawer = () => {
   const { showSidebar, toggleSidebar } = useGlobalContext();
-
+  const handleOverlayClick = () => {
+    toggleSidebar();
+  };
   return (
     <AnimatePresence>
       <div className="hidden md:block">
@@ -19,6 +23,13 @@ const SideDrawer = () => {
             exit={{ x: "-100%" }}
             transition={{ duration: 0.3 }}
           >
+            <button
+              type="button"
+              className="overlay-btn absolute top-10 left-10"
+              onClick={handleOverlayClick}
+            >
+              <GrFormClose />
+            </button>
             <header className="flex items-center justify-center h-24">
               <Logo />
             </header>
@@ -52,8 +63,3 @@ const SideDrawer = () => {
 };
 
 export default SideDrawer;
-
-
-
-
-

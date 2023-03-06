@@ -15,7 +15,7 @@
 }
 
 .overlay-btn {
-  @apply absolute top-10 left-10 bg-transparent border-transparent text-2xl text-red-600 cursor-pointer;
+  @apply absolute top-10 left-10 bg-transparent border-transparent text-2xl cursor-pointer;
 }
 
 
