@@ -1,8 +1,8 @@
-import React from 'react';
-import { useGlobalContext } from '../context/context';
-import Logo from './Logo';
-import links from '../utils/links';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { useGlobalContext } from "../context/context";
+import Logo from "./Logo";
+import links from "../utils/links";
+import { NavLink } from "react-router-dom";
 
 const SideDrawer = () => {
   const { showSidebar, toggleSidebar } = useGlobalContext();
@@ -11,31 +11,35 @@ const SideDrawer = () => {
     <>
       {showSidebar && (
         <div
-          className="fixed h-screen top-0 left-0 z-50 transform transition-transform duration-300 ease-in-out lg:transform-none lg:static lg:h-auto lg:pt-0 lg:w-1/3 bg-white shadow"
-          style={{ transform: showSidebar ? 'translateX(0)' : 'translateX(-100%)' }}
+          className="fixed h-screen top-0 left-0 z-50 transform transition-transform duration-300 ease-in-out  md:static md:h-auto md:pt-0  bg-white flex flex-col justify-center "
+          style={{
+            transform: showSidebar ? "translateX(0)" : "translateX(-100%)",
+          }}
         >
-          <div className="w-full">
-            <div className="px-8 py-6 border-b h-12">
-              <Logo />
-            </div>
-            <div className="px-8 pt-6 pb-8">
-              {links.map((link) => {
-                const { id, path, text, icon } = link;
-                return (
-                  <NavLink
+          <header className="flex items-center justify-center h-24">
+          <Logo />
+          </header>
+
+          <div className="px-8 pt-6 pb-8">
+            {links.map((link) => {
+              const { id, path, text, icon } = link;
+              return (
+                <NavLink
                   key={id}
                   to={path}
-                  className="block px-4 py-2 text-[#2cb1bc] hover:bg-[#bef8fd] hover:text-white text-2xl leading-6 focus:outline-none"
+                  className="flex items-center px-4 py-6 text-[#2cb1bc] leading-6 focus:outline-none group"
                   activeClassName="bg-[#bef8fd] text-white"
                   onClick={() => toggleSidebar()}
                 >
-                  {icon}
-                  <span className="ml-3">{text}</span>
+                  <div className="mr-3 transition-colors group-hover:bg-[#bef8fd] group-hover:text-white">
+                    {icon}
+                  </div>
+                  <span className="transition-colors group-hover:text-[#bef8fd]">
+                    {text}
+                  </span>
                 </NavLink>
-                
-                );
-              })}
-            </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -44,5 +48,3 @@ const SideDrawer = () => {
 };
 
 export default SideDrawer;
-
-

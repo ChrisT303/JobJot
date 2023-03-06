@@ -8,7 +8,7 @@ const Navigation = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { toggleSidebar, userLogout, user} = useGlobalContext();
   return (
-    <div className="h-24 lg:h-6rem flex items-center justify-between shadow-md w-full md:sticky md:top-0">
+    <div className="h-24 lg:h-6rem flex items-center justify-between  w-full md:sticky md:top-0">
       <div className="flex items-center w-90vw">
         <button
           type="button"
