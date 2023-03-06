@@ -6,9 +6,14 @@ import Logo from "./Logo";
 
 const Navigation = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, userLogout, user} = useGlobalContext();
+  const { toggleSidebar, userLogout, user, showSidebar } = useGlobalContext();
+
+  const containerClassName = `h-24 lg:h-6rem flex items-center justify-between w-full md:sticky md:top-0 ${
+    showSidebar ? "md:ml-sidebar" : "md:ml-0"
+  }`;
+
   return (
-    <div className="h-24 lg:h-6rem flex items-center justify-between  w-full md:sticky md:top-0">
+    <div className={containerClassName}>
       <div className="flex items-center w-90vw">
         <button
           type="button"
@@ -22,7 +27,7 @@ const Navigation = () => {
         <Logo />
       </div>
       <div className="hidden md:block mx-4">
-        <h3 className="m-0 font-bold">Dashboard</h3>
+        <h3 className="m-0 font-bold text-center">Dashboard</h3>
       </div>
       <div className="relative">
         <button
@@ -55,3 +60,7 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+
+
+

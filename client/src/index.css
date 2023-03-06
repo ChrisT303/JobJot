@@ -24,6 +24,15 @@
   padding: 0.5rem 1.25rem;
 }
 
-/* Remove outline from all elements */
+.md\\:ml-sidebar {
+  margin-left: 250px;
+}
+
+@media (max-width: 767px) {
+  .md\\:ml-sidebar {
+    margin-left: 0;
+  }
+}
+
 
 
