@@ -26,6 +26,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function () {
+  // console.log(this.modifiedPaths());
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
@@ -38,7 +40,7 @@ UserSchema.methods.JWTToken = function () {
 
 UserSchema.methods.comparePasswords = async function (userPassword) {
   const passwordMatch = await bcrypt.compare(userPassword, this.password);
-  return passwordMatch
+  return passwordMatch;
 };
 
 const User = mongoose.model("User", UserSchema);

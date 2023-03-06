@@ -12,6 +12,7 @@ import jobsRoutes from "./routes/jobsRoutes.js";
 
 import notFoundMiddleware from "./middleware/notFound.js";
 import errorHandlerMiddleware from "./middleware/error.js";
+import authUser from "./middleware/auth.js";
 
 if (process.env.NODE_ENV !== "development") {
   app.use(morgan("dev"));
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/jobs", jobsRoutes);
+app.use("/api/v1/jobs", authUser, jobsRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
