@@ -80,8 +80,8 @@ const AppProvider = ({ children }) => {
 
   const addUserLocalStorage = ({ user, token, location }) => {
     localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("token", JSON.stringify(token));
-    localStorage.setItem("location", JSON.stringify(location));
+    localStorage.setItem("token", token);
+    localStorage.setItem("location", location);
   };
 
   const removeUserLocalStorage = () => {

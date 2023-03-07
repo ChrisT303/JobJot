@@ -52,7 +52,9 @@ const RegisterPage = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border-t-4 border-[#75c9b7]">
         <div className="flex flex-col items-center mb-6">
-          <Logo />
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
           <h2 className="text-2xl font-medium text-center mt-6">
             {values.isRegistered ? "Login" : "Register"}
           </h2>
@@ -104,6 +106,7 @@ const RegisterPage = () => {
             </>
           ) : (
             <>
+
               <span className="text-gray-600">Already have an account?</span>
               <button
                 className="text-[#75c9b7] underline ml-1"
