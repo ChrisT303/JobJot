@@ -39,19 +39,20 @@ const SideDrawer = () => {
                 const { id, path, text, icon } = link;
                 return (
                   <NavLink
-                    key={id}
-                    to={path}
-                    className="flex items-center px-4 py-6 text-[#2cb1bc] leading-6 focus:outline-none group"
-                    activeClassName="bg-[#bef8fd] text-white"
-                    onClick={() => toggleSidebar()}
-                  >
-                    <div className="mr-3 transition-colors group-hover:bg-[#bef8fd] group-hover:text-white">
-                      {icon}
-                    </div>
-                    <span className="transition-colors group-hover:text-[#bef8fd]">
-                      {text}
-                    </span>
-                  </NavLink>
+                  key={id}
+                  to={path}
+                  className="flex items-center px-4 py-6 text-[#2cb1bc] leading-6 focus:outline-none group"
+                  activeclassname="bg-[#bef8fd] text-white"
+                  onClick={() => toggleSidebar()}
+                >
+                  <div className="mr-3 transition-colors group-hover:bg-[#bef8fd] group-hover:text-white">
+                    {icon}
+                  </div>
+                  <span className="transition-colors group-hover:text-[#bef8fd]">
+                    {text}
+                  </span>
+                </NavLink>
+                
                 );
               })}
             </div>

@@ -6,7 +6,7 @@ import { Logo } from '../components';
 const LandingPage = () => {
   return (
     <main>
-      <div class="mx-auto my-4">
+      <div className="mx-auto my-4">
         <nav className="flex mx-4 sm:mx-6 md:mx-8 items-center">
         <Logo />
         </nav>

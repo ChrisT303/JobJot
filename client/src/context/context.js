@@ -35,7 +35,34 @@ const GlobalContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // console.log(state);
+
+  const authFetch = axios.create({
+    baseURL: "/api/v1",
+  });
+
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers["Authorization"] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(error.response)
+      if(error.response.status === 401) {
+        console.log('Auth Error')
+      }
+
+      return Promise.reject(error);
+    }
+  );
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -112,15 +139,13 @@ const AppProvider = ({ children }) => {
   };
 
   const updateUser = async (currentUser) => {
-    console.log(currentUser.name);
-    console.log(currentUser.email);
-    console.log(currentUser.lastName);
-    console.log(currentUser.location);
-    console.log(currentUser);
+    try{
+     const {data} = await authFetch.patch('/auth/updateUser', currentUser)
+     console.log(data)
+    }catch(error){
+
+    }
   };
-  
-  
-  
 
   return (
     <GlobalContext.Provider
