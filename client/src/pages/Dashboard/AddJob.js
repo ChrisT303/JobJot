@@ -1,6 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../context/context";
-import { FormRow, AlertMessage } from "../../components";
+import { FormRow, AlertMessage, SelectRow } from "../../components";
 
 const AddJob = () => {
   const {
@@ -70,24 +70,24 @@ const AddJob = () => {
             />
           </div>
           <div className="col-span-1 mb-6 px-2">
-            <FormRow
+            <SelectRow
               type="select"
               labelText="Job Type"
               name="jobType"
               value={jobType}
               handleChange={handleInput}
-              options={jobTypeChoices}
+              list={jobTypeChoices}
               inputClassName="w-full text-sm md:text-base"
             />
           </div>
           <div className="col-span-1 mb-6 px-2">
-            <FormRow
+            <SelectRow
               type="select"
               labelText="Status"
               name="status"
               value={status}
               handleChange={handleInput}
-              options={statusChoices}
+              list={statusChoices}
               inputClassName="w-full text-sm md:text-base"
             />
           </div>
