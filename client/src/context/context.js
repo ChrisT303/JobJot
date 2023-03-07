@@ -30,8 +30,16 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || "",
-  jobLocation: userLocation || "",
   showSidebar: false,
+  modifying: false,
+  modifyJobId: "",  
+  position: "",
+  company: "",
+  jobLocation: userLocation || "",
+  jobTypeChoices: ["Full Time", "Part Time", "Contract", "Internship", "Remote"],
+  jobType: "Full Time",
+  statusChoices: ["Applied", "Interview", "Offer", "Rejected"],
+  status: "Applied",
 };
 
 const GlobalContext = React.createContext();
