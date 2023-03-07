@@ -13,6 +13,9 @@ import {
   LOGIN_ERROR,
   TOGGLE_SIDEBAR,
   USER_LOGOUT,
+  UPDATE_START,
+  UPDATE_SUCCESS,
+  UPDATE_ERROR,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -55,9 +58,9 @@ const AppProvider = ({ children }) => {
       return response;
     },
     (error) => {
-      console.log(error.response)
-      if(error.response.status === 401) {
-        console.log('Auth Error')
+      console.log(error.response);
+      if (error.response.status === 401) {
+        console.log("Auth Error");
       }
 
       return Promise.reject(error);
@@ -139,12 +142,19 @@ const AppProvider = ({ children }) => {
   };
 
   const updateUser = async (currentUser) => {
-    try{
-     const {data} = await authFetch.patch('/auth/updateUser', currentUser)
-     console.log(data)
-    }catch(error){
-
+    dispatch({ type: UPDATE_START });
+    try {
+      const { data } = await authFetch.patch("/auth/updateUser", currentUser);
+      const { user, token, location } = data;
+      dispatch({ type: UPDATE_SUCCESS, payload: { token, user, location } });
+      addUserLocalStorage({ user, token, location });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
     }
+    clearAlert();
   };
 
   return (

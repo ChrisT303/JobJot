@@ -1,3 +1,4 @@
+import { initialState } from "./context";
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
@@ -9,9 +10,10 @@ import {
   LOGIN_ERROR,
   TOGGLE_SIDEBAR,
   USER_LOGOUT,
+  UPDATE_START,
+  UPDATE_SUCCESS,
+  UPDATE_ERROR,
 } from "./actions";
-
-import { initialState } from "./context";
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -97,11 +99,40 @@ const reducer = (state, action) => {
       ...initialState,
       user: null,
       token: null,
-      userLocation: '',
-      jobLocation: '',
+      userLocation: "",
+      jobLocation: "",
+    };
+  }
+  if (action.type === UPDATE_START) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === UPDATE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      token: action.payload.token,
+      user: action.payload.user,
+      userLocation: action.payload.location,
+      jobLocation: action.payload.location,
+      showAlert: true,
+      alertType: "success",
+      alertMessage: "Profile Updated!",
+    };
+  }
+  if (action.type === UPDATE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertMessage: action.payload.msg,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
 };
 
 export default reducer;
+
