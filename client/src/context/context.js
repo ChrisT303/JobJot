@@ -37,7 +37,6 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log(state);
 
-
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
     clearAlert();
@@ -65,12 +64,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: REGISTER_START });
     try {
       const response = await axios.post("/api/v1/auth/register", currentUser);
-    //   console.log(response)
+      //   console.log(response)
       const { user, token, location } = response.data;
       dispatch({ type: REGISTER_SUCCESS, payload: { token, user, location } });
       addUserLocalStorage({ user, token, location });
     } catch (error) {
-    //   console.log(error.response);
+      //   console.log(error.response);
       dispatch({
         type: REGISTER_ERROR,
         payload: { msg: error.response.data.msg },
@@ -82,7 +81,7 @@ const AppProvider = ({ children }) => {
   const loginUser = async (currentUser) => {
     dispatch({ type: LOGIN_START });
     try {
-      const {data} = await axios.post("/api/v1/auth/login", currentUser);
+      const { data } = await axios.post("/api/v1/auth/login", currentUser);
       const { user, token, location } = data;
       dispatch({ type: LOGIN_SUCCESS, payload: { token, user, location } });
       addUserLocalStorage({ user, token, location });
@@ -93,28 +92,52 @@ const AppProvider = ({ children }) => {
       });
     }
     clearAlert();
-}
+  };
 
-const toggleSidebar = () => {
-  console.log("toggleSidebar called before state update, showSidebar is", state.showSidebar);
-  dispatch({ type: TOGGLE_SIDEBAR });
-  console.log("toggleSidebar called after state update, showSidebar is", state.showSidebar);
-};
+  const toggleSidebar = () => {
+    console.log(
+      "toggleSidebar called before state update, showSidebar is",
+      state.showSidebar
+    );
+    dispatch({ type: TOGGLE_SIDEBAR });
+    console.log(
+      "toggleSidebar called after state update, showSidebar is",
+      state.showSidebar
+    );
+  };
 
-
-const userLogout = () => {
+  const userLogout = () => {
     dispatch({ type: USER_LOGOUT });
     removeUserLocalStorage();
-}
+  };
+
+  const updateUser = async (currentUser) => {
+    console.log(currentUser.name);
+    console.log(currentUser.email);
+    console.log(currentUser.lastName);
+    console.log(currentUser.location);
+    console.log(currentUser);
+  };
+  
+  
+  
 
   return (
-    <GlobalContext.Provider value={{ ...state, displayAlert, registerUser, loginUser, toggleSidebar, userLogout }}>
+    <GlobalContext.Provider
+      value={{
+        ...state,
+        displayAlert,
+        registerUser,
+        loginUser,
+        toggleSidebar,
+        userLogout,
+        updateUser,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
 };
-
-
 
 const useGlobalContext = () => {
   return useContext(GlobalContext);
