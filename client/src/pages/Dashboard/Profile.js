@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/context";
 import { FormRow, AlertMessage } from "../../components";
-import { IoConstructOutline } from "react-icons/io5";
 
 const Profile = () => {
   const { user, showAlert, displayAlert, updateUser, isLoading } =
@@ -14,11 +13,10 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!name || !email || !lastName || !location) {
-    //   displayAlert();
-    //   return;
-    // } 
-    // console.log("Submitting user data:", { name, email, lastName, location });
+    if (!name || !email || !lastName || !location) {
+      displayAlert();
+      return;
+    } 
     updateUser({ name, email, lastName, location });
   };
   
