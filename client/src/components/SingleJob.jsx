@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import moment from "moment";
 
-const SingleJob = () => {
+const SingleJob = ({ company, createdAt }) => {
+  const date = moment(createdAt).format("MMM Do YYYY hh:mm A");
   return (
-    <h2>
-      Single Job
-    </h2>
-  )
-}
+    <div>
+      <h5>{company}</h5> 
+      <h5>{date}</h5> 
+    </div>
+  );
+};
 
-export default SingleJob
+export default SingleJob;
+
+
+
