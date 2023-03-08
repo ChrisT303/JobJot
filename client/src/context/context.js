@@ -18,6 +18,9 @@ import {
   UPDATE_ERROR,
   HANDLE_CHANGE,
   CLEAR_INPUTS,
+  CREATE_START,
+  CREATE_SUCCESS,
+  CREATE_ERROR,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -34,11 +37,17 @@ const initialState = {
   userLocation: userLocation || "",
   showSidebar: false,
   modifying: false,
-  modifyJobId: "",  
+  modifyJobId: "",
   position: "",
   company: "",
   jobLocation: userLocation || "",
-  jobTypeChoices: ["Full Time", "Part Time", "Contract", "Internship", "Remote"],
+  jobTypeChoices: [
+    "Full Time",
+    "Part Time",
+    "Contract",
+    "Internship",
+    "Remote",
+  ],
   jobType: "Full Time",
   statusChoices: ["Applied", "Interview", "Offer", "Rejected"],
   status: "Applied",
@@ -146,13 +155,13 @@ const AppProvider = ({ children }) => {
     );
   };
 
-  const handleChange = ({value, name}) => {
-    dispatch({ type: HANDLE_CHANGE, payload: {value, name} });
-  }
+  const handleChange = ({ value, name }) => {
+    dispatch({ type: HANDLE_CHANGE, payload: { value, name } });
+  };
 
   const clearInputs = () => {
     dispatch({ type: CLEAR_INPUTS });
-  }
+  };
 
   const userLogout = () => {
     dispatch({ type: USER_LOGOUT });
@@ -177,6 +186,30 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const createJob = async () => {
+    dispatch({ type: CREATE_START });
+    try {
+      const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.post("/jobs", {
+        position,
+        company,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({ type: CREATE_SUCCESS });
+      dispatch({ type: CLEAR_INPUTS });
+      // clearInputs();
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: CREATE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -189,6 +222,7 @@ const AppProvider = ({ children }) => {
         updateUser,
         handleChange,
         clearInputs,
+        createJob,
       }}
     >
       {children}

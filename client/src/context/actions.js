@@ -17,3 +17,7 @@ export const UPDATE_ERROR = "UPDATE_ERROR";
 
 export const HANDLE_CHANGE = "HANDLE_CHANGE";
 export const CLEAR_INPUTS = "CLEAR_INPUTS";
+
+export const CREATE_START = "CREATE_START";
+export const CREATE_SUCCESS = "CREATE_SUCCESS";
+export const CREATE_ERROR = "CREATE_ERROR";

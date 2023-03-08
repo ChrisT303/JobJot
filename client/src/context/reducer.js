@@ -15,6 +15,9 @@ import {
   UPDATE_ERROR,
   HANDLE_CHANGE,
   CLEAR_INPUTS,
+  CREATE_START,
+  CREATE_SUCCESS,
+  CREATE_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -152,6 +155,30 @@ const reducer = (state, action) => {
     return {
       ...state,
       ...clearedInputs,
+    };
+  }
+  if (action.type === CREATE_START) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === CREATE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertMessage: "Job Created!",
+    };
+  }
+  if (action.type === CREATE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertMessage: action.payload.msg,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);

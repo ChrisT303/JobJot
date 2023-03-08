@@ -4,6 +4,7 @@ import { FormRow, AlertMessage, SelectRow } from "../../components";
 
 const AddJob = () => {
   const {
+    isLoading,
     modifying,
     displayAlert,
     showAlert,
@@ -16,6 +17,7 @@ const AddJob = () => {
     status,
     handleChange,
     clearInputs,
+    createJob,
   } = useGlobalContext();
 
   const handleSubmit = (e) => {
@@ -24,7 +26,10 @@ const AddJob = () => {
       displayAlert();
       return;
     }
-    console.log("create job");
+    if (modifying) {
+      return;
+    }
+    createJob();
   };
 
   const handleInput = (e) => {
@@ -98,7 +103,7 @@ const AddJob = () => {
               type="submit"
               className="bg-blue-600 text-white py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
               onClick={handleSubmit}
-              // disabled={isLoading}
+              disabled={isLoading}
             >
               Submit
             </button>
