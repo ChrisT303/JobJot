@@ -21,3 +21,6 @@ export const CLEAR_INPUTS = "CLEAR_INPUTS";
 export const CREATE_START = "CREATE_START";
 export const CREATE_SUCCESS = "CREATE_SUCCESS";
 export const CREATE_ERROR = "CREATE_ERROR";
+
+export const GET_JOBS_START = "GET_JOBS_START";
+export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";

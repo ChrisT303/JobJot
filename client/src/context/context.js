@@ -21,6 +21,8 @@ import {
   CREATE_START,
   CREATE_SUCCESS,
   CREATE_ERROR,
+  GET_JOBS_START,
+  GET_JOBS_SUCCESS,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -51,6 +53,10 @@ const initialState = {
   jobType: "Full Time",
   statusChoices: ["Applied", "Interview", "Offer", "Rejected"],
   status: "Applied",
+  jobs: [],
+  allJobs: 0,
+  numOfPages: 0,
+  page: 1,
 };
 
 const GlobalContext = React.createContext();
@@ -210,6 +216,23 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getJobs = async () => {
+    let url = `/jobs`
+
+    dispatch({ type: GET_JOBS_START });
+    try {
+     const { data } = await authFetch.get(url);
+     const { jobs, allJobs, numOfPages} = data;
+      dispatch({ type: GET_JOBS_SUCCESS, payload: { jobs, allJobs, numOfPages } });
+    } catch (error) {
+      console.log(error.response);
+      // userLogout();
+    }
+    clearAlert();
+  };
+
+
+
   return (
     <GlobalContext.Provider
       value={{
@@ -223,6 +246,7 @@ const AppProvider = ({ children }) => {
         handleChange,
         clearInputs,
         createJob,
+        getJobs,
       }}
     >
       {children}

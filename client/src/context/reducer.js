@@ -18,6 +18,8 @@ import {
   CREATE_START,
   CREATE_SUCCESS,
   CREATE_ERROR,
+  GET_JOBS_START,
+  GET_JOBS_SUCCESS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -179,6 +181,22 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: "danger",
       alertMessage: action.payload.msg,
+    };
+  }
+  if (action.type === GET_JOBS_START) {
+    return {
+      ...state,
+      isLoading: true,
+      showAlert: false,
+    };
+  }
+  if (action.type === GET_JOBS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      jobs: action.payload.jobs,
+      allJobs: action.payload.allJobs,
+      numOfPages: action.payload.numOfPages,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
