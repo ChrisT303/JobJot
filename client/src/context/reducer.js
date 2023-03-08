@@ -13,6 +13,8 @@ import {
   UPDATE_START,
   UPDATE_SUCCESS,
   UPDATE_ERROR,
+  HANDLE_CHANGE,
+  CLEAR_INPUTS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -131,8 +133,28 @@ const reducer = (state, action) => {
       alertMessage: action.payload.msg,
     };
   }
+  if (action.type === HANDLE_CHANGE) {
+    return {
+      ...state,
+      [action.payload.name]: action.payload.value,
+    };
+  }
+  if (action.type === CLEAR_INPUTS) {
+    const clearedInputs = {
+      modifying: false,
+      modifyJobId: "",
+      position: "",
+      company: "",
+      jobLocation: state.userLocation,
+      jobType: "Full Time",
+      status: "Applied",
+    };
+    return {
+      ...state,
+      ...clearedInputs,
+    };
+  }
   throw new Error(`No action type provided: ${action.type}`);
 };
 
 export default reducer;
-

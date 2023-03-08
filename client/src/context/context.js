@@ -16,6 +16,8 @@ import {
   UPDATE_START,
   UPDATE_SUCCESS,
   UPDATE_ERROR,
+  HANDLE_CHANGE,
+  CLEAR_INPUTS,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -144,6 +146,14 @@ const AppProvider = ({ children }) => {
     );
   };
 
+  const handleChange = ({value, name}) => {
+    dispatch({ type: HANDLE_CHANGE, payload: {value, name} });
+  }
+
+  const clearInputs = () => {
+    dispatch({ type: CLEAR_INPUTS });
+  }
+
   const userLogout = () => {
     dispatch({ type: USER_LOGOUT });
     removeUserLocalStorage();
@@ -177,6 +187,8 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         userLogout,
         updateUser,
+        handleChange,
+        clearInputs,
       }}
     >
       {children}

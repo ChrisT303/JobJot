@@ -14,3 +14,6 @@ export const USER_LOGOUT = "USER_LOGOUT";
 export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_ERROR = "UPDATE_ERROR";
+
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
+export const CLEAR_INPUTS = "CLEAR_INPUTS";

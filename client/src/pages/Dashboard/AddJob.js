@@ -14,6 +14,8 @@ const AddJob = () => {
     jobType,
     statusChoices,
     status,
+    handleChange,
+    clearInputs,
   } = useGlobalContext();
 
   const handleSubmit = (e) => {
@@ -28,7 +30,7 @@ const AddJob = () => {
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(`${name}: ${value}`);
+    handleChange({ name, value });
   };
   return (
     <div className="container mx-auto my-8 px-4 lg:px-0 w-full lg:w-2/3">
@@ -62,7 +64,7 @@ const AddJob = () => {
           <div className="col-span-1 mb-6 px-2">
             <FormRow
               type="text"
-              labelText="Location"
+              labelText="Job Location"
               name="jobLocation"
               value={jobLocation}
               handleChange={handleInput}
@@ -91,19 +93,29 @@ const AddJob = () => {
               inputClassName="w-full text-sm md:text-base"
             />
           </div>
-          <div className="col-span-1 mb-6 px-2 md:col-span-2 lg:col-span-3">
+          <div className="col-span-1 mb-6 px-2 md:col-span-2 lg:col-span-3 flex justify-center space-x-4">
             <button
               type="submit"
-              className="bg-blue-600 text-white py-2 px-4 rounded-md "
+              className="bg-blue-600 text-white py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
+              onClick={handleSubmit}
+              // disabled={isLoading}
             >
               Submit
+            </button>
+            <button
+              className="bg-blue-600 text-white py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
+              onClick={(e) => {
+                e.preventDefault();
+                clearInputs();
+              }}
+            >
+              Clear
             </button>
           </div>
         </form>
       </div>
     </div>
   );
-  
 };
 
 export default AddJob;
