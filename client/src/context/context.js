@@ -231,7 +231,12 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-
+const setJobEdit = (id) => {
+  console.log(`setJobEdit called with id ${id}`);
+}
+const deleteJob = (id) => {
+  console.log(`deleteJob called with id ${id}`);
+}
 
   return (
     <GlobalContext.Provider
@@ -247,6 +252,8 @@ const AppProvider = ({ children }) => {
         clearInputs,
         createJob,
         getJobs,
+        setJobEdit,
+        deleteJob,
       }}
     >
       {children}

@@ -28,13 +28,14 @@ const JobsCont = () => {
 
   return (
     <div className="mt-16">
-      <h5>{allJobs} Job{jobs.length > 1 &&'s'} Found</h5>
-      <div className="grid grid-cols-2 gap-y-8">
-         {jobs.map((job) =>{
-            return <SingleJob key={job._id}{...job} />
-         })}
-      </div>
+    <h5>{allJobs} Job{jobs.length > 1 &&'s'} Found</h5>
+    <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+       {jobs.map((job) =>{
+          return <SingleJob key={job._id}{...job} />
+       })}
     </div>
+  </div>
+  
   );
 };
 
