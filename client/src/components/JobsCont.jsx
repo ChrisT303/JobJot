@@ -1,3 +1,4 @@
+// JobsCont.js
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../context/context";
 import LoadingSpinner from "./LoadingSpinner";
@@ -27,16 +28,13 @@ const JobsCont = () => {
   }
 
   return (
-    <div className="mt-16">
-    <h5>{allJobs} Job{jobs.length > 1 &&'s'} Found</h5>
-    <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
-       {jobs.map((job) =>{
-          return <SingleJob key={job._id}{...job} />
-       })}
+    <div className="mt-16 grid gap-4 gap-x-0 md:grid-cols-1 lg:grid-cols-2">
+      {jobs.map((job) => {
+        return <SingleJob key={job._id} {...job} />;
+      })}
     </div>
-  </div>
-  
   );
 };
 
 export default JobsCont;
+
