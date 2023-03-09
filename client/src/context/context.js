@@ -231,12 +231,14 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-const setJobEdit = (id) => {
-  console.log(`setJobEdit called with id ${id}`);
-}
-const deleteJob = (id) => {
-  console.log(`deleteJob called with id ${id}`);
-}
+  const setJobEdit = (id) => {
+    console.log(`set edit job: ${id}`);
+  }
+  
+  const deleteJob = (id) => {
+    console.log(`delete job: ${id}`);
+  }
+  
 
   return (
     <GlobalContext.Provider

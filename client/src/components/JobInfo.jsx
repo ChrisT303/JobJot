@@ -1,10 +1,11 @@
 import React from 'react'
 
-const JobInfo = () => {
+const JobInfo = ({icon, text}) => {
   return (
-    <h2>
-      Job Info 
-    </h2>
+    <div className='info-wrapper'>
+      <span className='info-icon'>{icon}</span>
+      <span className='info-text'>{text}</span>
+    </div>
   )
 }
 
