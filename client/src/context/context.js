@@ -23,6 +23,7 @@ import {
   CREATE_ERROR,
   GET_JOBS_START,
   GET_JOBS_SUCCESS,
+  SET_EDIT,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -217,13 +218,16 @@ const AppProvider = ({ children }) => {
   };
 
   const getJobs = async () => {
-    let url = `/jobs`
+    let url = `/jobs`;
 
     dispatch({ type: GET_JOBS_START });
     try {
-     const { data } = await authFetch.get(url);
-     const { jobs, allJobs, numOfPages} = data;
-      dispatch({ type: GET_JOBS_SUCCESS, payload: { jobs, allJobs, numOfPages } });
+      const { data } = await authFetch.get(url);
+      const { jobs, allJobs, numOfPages } = data;
+      dispatch({
+        type: GET_JOBS_SUCCESS,
+        payload: { jobs, allJobs, numOfPages },
+      });
     } catch (error) {
       console.log(error.response);
       // userLogout();
@@ -232,13 +236,16 @@ const AppProvider = ({ children }) => {
   };
 
   const setJobEdit = (id) => {
-    console.log(`set edit job: ${id}`);
-  }
-  
+    dispatch({ type: SET_EDIT, payload: { id } });
+  };
+
   const deleteJob = (id) => {
     console.log(`delete job: ${id}`);
-  }
-  
+  };
+
+  const updateJob = (id) => {
+    console.log("update job");
+  };
 
   return (
     <GlobalContext.Provider
@@ -256,6 +263,7 @@ const AppProvider = ({ children }) => {
         getJobs,
         setJobEdit,
         deleteJob,
+        updateJob,
       }}
     >
       {children}

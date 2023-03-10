@@ -20,6 +20,7 @@ import {
   CREATE_ERROR,
   GET_JOBS_START,
   GET_JOBS_SUCCESS,
+  SET_EDIT,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -197,6 +198,20 @@ const reducer = (state, action) => {
       jobs: action.payload.jobs,
       allJobs: action.payload.allJobs,
       numOfPages: action.payload.numOfPages,
+    };
+  }
+  if (action.type === SET_EDIT) {
+    const job = state.jobs.find((job) => job._id === action.payload.id);
+    const { _id, position, company, jobLocation, jobType, status } = job;
+    return {
+      ...state,
+      modifying: true,
+      modifyJobId: _id,
+      position,
+      company,
+      jobLocation,
+      jobType,
+      status,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
