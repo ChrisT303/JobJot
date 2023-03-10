@@ -22,6 +22,9 @@ import {
   GET_JOBS_SUCCESS,
   SET_EDIT,
   DELETE_START,
+  MODIFY_START,
+  MODIFY_SUCCESS,
+  MODIFY_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -219,6 +222,30 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: true,
+    };
+  }
+  if (action.type === MODIFY_START) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === MODIFY_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertMessage: "Job Updated!",
+    };
+  }
+  if (action.type === MODIFY_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertMessage: action.payload.msg,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);

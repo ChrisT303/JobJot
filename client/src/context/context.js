@@ -25,6 +25,9 @@ import {
   GET_JOBS_SUCCESS,
   SET_EDIT,
   DELETE_START,
+  MODIFY_START,
+  MODIFY_SUCCESS,
+  MODIFY_ERROR,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -251,8 +254,27 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const updateJob = (id) => {
-    console.log("update job");
+  const modifyJob = async () => {
+    dispatch({ type: MODIFY_START });
+    try {
+      const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.patch(`/jobs/${state.modifyJobId}`, {
+        position,
+        company,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({ type: MODIFY_SUCCESS });
+      dispatch({ type: CLEAR_INPUTS });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: MODIFY_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
   };
 
   return (
@@ -271,7 +293,7 @@ const AppProvider = ({ children }) => {
         getJobs,
         setJobEdit,
         deleteJob,
-        updateJob,
+        modifyJob,
       }}
     >
       {children}

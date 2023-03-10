@@ -28,3 +28,7 @@ export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
 export const SET_EDIT = "SET_EDIT";
 
 export const DELETE_START = "DELETE_START";
+
+export const MODIFY_START = "MODIFY_START";
+export const MODIFY_SUCCESS = "MODIFY_SUCCESS";
+export const MODIFY_ERROR = "MODIFY_ERROR";
