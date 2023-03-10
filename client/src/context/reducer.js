@@ -21,6 +21,7 @@ import {
   GET_JOBS_START,
   GET_JOBS_SUCCESS,
   SET_EDIT,
+  DELETE_START,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -212,6 +213,12 @@ const reducer = (state, action) => {
       jobLocation,
       jobType,
       status,
+    };
+  }
+  if (action.type === DELETE_START) {
+    return {
+      ...state,
+      isLoading: true,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);
