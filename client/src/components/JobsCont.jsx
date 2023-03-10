@@ -42,4 +42,4 @@ const JobsCont = () => {
   );
 };
 
-export default JobsCont;
+export default JobsCont

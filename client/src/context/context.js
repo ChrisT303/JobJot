@@ -51,7 +51,7 @@ const initialState = {
     "Remote",
   ],
   jobType: "Full Time",
-  statusChoices: ["Applied", "Interview", "Offer", "Rejected"],
+  statusChoices: ["Applied", "Interview", "Offer", "Declined"],
   status: "Applied",
   jobs: [],
   allJobs: 0,

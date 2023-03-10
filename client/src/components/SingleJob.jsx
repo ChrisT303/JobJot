@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import { useGlobalContext } from "../context/context";
 import { Link } from "react-router-dom";
@@ -18,32 +18,48 @@ const SingleJob = ({
   const { setJobEdit, deleteJob } = useGlobalContext();
   const date = moment(createdAt).format("MMM D YYYY");
 
-  const shapes = ["star", "diamond", "circle", "square"];
-
-  const [shape, setShape] = useState(shapes[Math.floor(Math.random() * shapes.length)]);
+  let shape;
+  switch (status) {
+    case "Applied":
+      shape = "diamond";
+      break;
+    case "Interview":
+      shape = "star";
+      break;
+    case "Offer":
+      shape = "circle";
+      break;
+    case "Declined":
+      shape = "square";
+      break;
+    default:
+      shape = "diamond";
+  }
 
   const firstLetter = company.charAt(0);
 
   return (
-    <div className='job-card'>
-      <header className='card-header'>
-        <div className={`main-icon ${shape}`}>
-          {firstLetter}
-        </div>
-        <div className='info'>
-          <h5 className='capitalize'>{position}</h5>
-          <p className='capitalize'>{company}</p>
+    <div className="job-card">
+      <header className="card-header">
+        <div className={`main-icon ${shape}`}>{firstLetter}</div>
+        <div className="info">
+          <h5 className="capitalize">{position}</h5>
+          <p className="capitalize">{company}</p>
         </div>
       </header>
-      <div className='content'>
-        <div className='info-wrapper'>
-          <div className='left-info'>
+      <div className="content">
+        <div className="info-wrapper">
+          <div className="left-info">
             <JobInfo icon={<MdLocationCity />} text={jobLocation} />
             <JobInfo icon={<GoBriefcase />} text={jobType} />
           </div>
-          <div className='right-info' >
+          <div className="right-info">
             <JobInfo icon={<GoCalendar />} text={date} />
-            <div className={`status ${status === 'Applied' ? 'applied' : status.toLowerCase()}`}>
+            <div
+              className={`status ${
+                status === "Applied" ? "applied" : status.toLowerCase()
+              }`}
+            >
               {status}
             </div>
           </div>
@@ -72,8 +88,5 @@ const SingleJob = ({
 };
 
 export default SingleJob;
-
-
-
 
 
