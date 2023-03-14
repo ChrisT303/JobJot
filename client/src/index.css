@@ -265,6 +265,23 @@
   background-color: #4B4E6D;
 }
 
+.yellow {
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+.blue {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.red {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+
+
 
   @media (min-width: 992px) {
     .jobs {
