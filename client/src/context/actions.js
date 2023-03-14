@@ -32,3 +32,6 @@ export const DELETE_START = "DELETE_START";
 export const MODIFY_START = "MODIFY_START";
 export const MODIFY_SUCCESS = "MODIFY_SUCCESS";
 export const MODIFY_ERROR = "MODIFY_ERROR";
+
+export const GET_STATS_START = "GET_STATS_START";
+export const GET_STATS_SUCCESS = "GET_STATS_SUCCESS";

@@ -25,6 +25,8 @@ import {
   MODIFY_START,
   MODIFY_SUCCESS,
   MODIFY_ERROR,
+  GET_STATS_START,
+  GET_STATS_SUCCESS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -246,6 +248,22 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: "danger",
       alertMessage: action.payload.msg,
+    };
+  }
+
+  if (action.type === GET_STATS_START) {
+    return {
+      ...state,
+      isLoading: true,
+      showAlert: false,
+    };
+  }
+  if (action.type === GET_STATS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      stats: action.payload.stats,
+      monthlyApplied: action.payload.monthlyApplied,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);

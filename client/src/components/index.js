@@ -7,6 +7,10 @@ import MobileOverlay from "./MobileOverlay";
 import SelectRow from "./SelectRow";
 import SearchCont from "./SearchCont";
 import JobsCont from "./JobsCont";
+import StatsCont from "./StatsCont";
+import ChartCont from "./ChartCont";
+import LoadingSpinner from "./LoadingSpinner";
+
 
 export {
   Logo,
@@ -18,4 +22,7 @@ export {
   SelectRow,
   SearchCont,
   JobsCont,
+  StatsCont,
+  ChartCont,
+  LoadingSpinner,
 };

@@ -28,6 +28,8 @@ import {
   MODIFY_START,
   MODIFY_SUCCESS,
   MODIFY_ERROR,
+  GET_STATS_START,
+  GET_STATS_SUCCESS,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -62,6 +64,8 @@ const initialState = {
   allJobs: 0,
   numOfPages: 0,
   page: 1,
+  stats: [],
+  monthlyApplied: [],
 };
 
 const GlobalContext = React.createContext();
@@ -277,6 +281,24 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getStats = async () => {
+    dispatch({ type: GET_STATS_START });
+    try {
+      const { data } = await authFetch.get("/jobs/stats");
+      dispatch({
+        type: GET_STATS_SUCCESS,
+        payload: {
+          stats: data.beginningStats,
+          monthlyApplied: data.monthlyApplied,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+      // userLogout();
+    }
+    clearAlert();
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -294,6 +316,7 @@ const AppProvider = ({ children }) => {
         setJobEdit,
         deleteJob,
         modifyJob,
+        getStats,
       }}
     >
       {children}

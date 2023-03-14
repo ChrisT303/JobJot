@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useGlobalContext } from "../../context/context";
+import { StatsCont, LoadingSpinner, ChartCont } from "../../components";
 
 const Stats = () => {
-  return (
-    <div>
-      Stats Page
-    </div>
-  )
-}
+  const { getStats, isLoading, monthlyApplied } = useGlobalContext();
 
-export default Stats
+  useEffect(() => {
+    getStats();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner center />;
+  }
+  return <>
+    <StatsCont />
+    {monthlyApplied.length > 0 && <ChartCont />}
+   
+  </>;
+};
+
+export default Stats;
