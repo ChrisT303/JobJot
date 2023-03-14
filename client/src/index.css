@@ -295,33 +295,7 @@
 
   }
 
-  .recharts-container {
-  svg {
-    font-size: 12px;
-  }
 
-  .recharts-cartesian-axis-tick-value {
-    fill: #4b5563;
-  }
-
-  .recharts-legend-item {
-    font-size: 14px;
-  }
-
-  .recharts-text.recharts-label {
-    fill: #4b5563;
-    font-size: 16px;
-  }
-
-  .recharts-tooltip-wrapper {
-    font-size: 14px;
-  }
-
-  .recharts-reference-line-line {
-    stroke: #718096;
-    stroke-dasharray: 3 3;
-  }
-}
 
 
   @media screen and (min-width: 675px) and (max-width: 1023px) {
