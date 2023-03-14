@@ -7,6 +7,7 @@ import {
 } from "../errors/index.js";
 import permissions from "../utils/permissions.js";
 import mongoose from "mongoose";
+import moment from "moment";
 
 const createJob = async (req, res) => {
   const { position, company } = req.body;
@@ -86,7 +87,38 @@ const getStats = async (req, res) => {
     Offer: stats.Offer || 0,
   };
 
-  let monthlyApplied = [];
+  let monthlyApplied = await Job.aggregate([
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.user_id) } },
+    {
+      $group: {
+        _id: {
+          year: {
+            $year: "$createdAt",
+          },
+          month: {
+            $month: "$createdAt",
+          },
+        },
+        count: { $sum: 1 },
+      },
+    },
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+    { $limit: 6 },
+  ]);
+
+  monthlyApplied = monthlyApplied
+    .map((item) => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
+      const date = moment()
+        .month(month - 1)
+        .year(year)
+        .format("MMM Y");
+      return { date, count };
+    })
+    .reverse();
 
   res.status(StatusCodes.OK).json({ beginningStats, monthlyApplied });
 };
