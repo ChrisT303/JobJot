@@ -9,6 +9,8 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('postcss-nested'),
+  ],
 };
 
