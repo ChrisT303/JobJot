@@ -74,7 +74,7 @@ const Profile = () => {
           </div>
           <div className="col-span-1 mb-6 px-2 lg:col-span-3">
             <button
-              className="bg-blue-600 text-white px-4 py-2 rounded-md"
+              className="btn px-4 py-2 rounded-md"
               type="submit"
               disabled={isLoading}
             >
