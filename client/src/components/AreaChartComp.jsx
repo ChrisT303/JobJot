@@ -22,12 +22,15 @@ const AreaChartComp = ({ data }) => {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
           },
         },
       },
+      
     });
 
     return () => {
@@ -36,10 +39,11 @@ const AreaChartComp = ({ data }) => {
   }, [data]);
 
   return (
-    <div>
+    <div className="chart-container">
       <canvas ref={chartRef} />
     </div>
   );
+  
 };
 
 export default AreaChartComp;

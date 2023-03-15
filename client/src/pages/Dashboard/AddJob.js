@@ -103,14 +103,14 @@ const AddJob = () => {
           <div className="col-span-1 mb-6 px-2 md:col-span-2 lg:col-span-3 flex justify-center space-x-4">
             <button
               type="submit"
-              className="bg-blue-600 text-white py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
+              className="btn py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
               onClick={handleSubmit}
               disabled={isLoading}
             >
               Submit
             </button>
             <button
-              className="bg-blue-600 text-white py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
+              className="btn py-1 px-2 md:py-2 md:px-4 rounded-md w-24"
               onClick={(e) => {
                 e.preventDefault();
                 clearInputs();

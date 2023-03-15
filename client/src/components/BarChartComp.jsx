@@ -21,12 +21,15 @@ const BarChartComp = ({ data }) => {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
           },
         },
       },
+      
     });
 
     return () => {
@@ -35,10 +38,11 @@ const BarChartComp = ({ data }) => {
   }, [data]);
 
   return (
-    <div>
+    <div className="chart-container">
       <canvas ref={chartRef} />
     </div>
   );
+  
 };
 
 export default BarChartComp;
