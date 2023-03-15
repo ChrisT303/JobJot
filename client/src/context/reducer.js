@@ -27,6 +27,7 @@ import {
   MODIFY_ERROR,
   GET_STATS_START,
   GET_STATS_SUCCESS,
+  CLEAR_FILTERS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -264,6 +265,15 @@ const reducer = (state, action) => {
       isLoading: false,
       stats: action.payload.stats,
       monthlyApplied: action.payload.monthlyApplied,
+    };
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      search: "",
+      searchStatus: "All Jobs",
+      searchType: "All Jobs",
+      sort: "Most Recent",
     };
   }
   throw new Error(`No action type provided: ${action.type}`);

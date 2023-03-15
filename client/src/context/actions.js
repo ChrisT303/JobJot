@@ -35,3 +35,5 @@ export const MODIFY_ERROR = "MODIFY_ERROR";
 
 export const GET_STATS_START = "GET_STATS_START";
 export const GET_STATS_SUCCESS = "GET_STATS_SUCCESS";
+
+export const CLEAR_FILTERS = "CLEAR_FILTERS";

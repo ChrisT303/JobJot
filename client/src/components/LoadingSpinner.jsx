@@ -13,4 +13,3 @@ const LoadingSpinner = ({center}) => {
 
 export default LoadingSpinner;
 
-// flex justify-center items-center

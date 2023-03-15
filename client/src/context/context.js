@@ -30,6 +30,7 @@ import {
   MODIFY_ERROR,
   GET_STATS_START,
   GET_STATS_SUCCESS,
+  CLEAR_FILTERS,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -66,6 +67,11 @@ const initialState = {
   page: 1,
   stats: [],
   monthlyApplied: [],
+  search: "",
+  searchStatus: "All Jobs",
+  searchType: "All Jobs",
+  sort: "Most Recent",
+  sortChoices: ["Most Recent", "Oldest", "A-Z", "Z-A"],
 };
 
 const GlobalContext = React.createContext();
@@ -226,7 +232,13 @@ const AppProvider = ({ children }) => {
   };
 
   const getJobs = async () => {
-    let url = `/jobs`;
+    const { search, searchStatus, searchType, sort } = state;
+
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+
+    if (search) {
+      url = url + `&search=${search}`;
+    }
 
     dispatch({ type: GET_JOBS_START });
     try {
@@ -299,6 +311,10 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -317,6 +333,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         modifyJob,
         getStats,
+        clearFilter,
       }}
     >
       {children}

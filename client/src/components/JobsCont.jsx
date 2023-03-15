@@ -4,11 +4,21 @@ import LoadingSpinner from "./LoadingSpinner";
 import SingleJob from "./SingleJob";
 
 const JobsCont = () => {
-  const { getJobs, jobs, isLoading, page, allJobs } = useGlobalContext();
+  const {
+    getJobs,
+    jobs,
+    isLoading,
+    page,
+    allJobs,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+  } = useGlobalContext();
 
   useEffect(() => {
     getJobs();
-  }, []);
+  }, [search, searchStatus, searchType, sort]);
 
   if (isLoading) {
     return (
@@ -28,18 +38,18 @@ const JobsCont = () => {
 
   return (
     <div className="job-wrapper">
-    {/* {showAlert && <Alert />} */}
-    <h5>
-      {allJobs} Job{jobs.length > 1 && 's'} Found
-    </h5>
-    <div className='jobs'>
-      {jobs.map((job) => {
-        return <SingleJob key={job._id} {...job} />;
-      })}
+      {/* {showAlert && <Alert />} */}
+      <h5>
+        {allJobs} Job{jobs.length > 1 && "s"} Found
+      </h5>
+      <div className="jobs">
+        {jobs.map((job) => {
+          return <SingleJob key={job._id} {...job} />;
+        })}
+      </div>
+      {/* {numOfPages > 1 && <PageBtnContainer />} */}
     </div>
-    {/* {numOfPages > 1 && <PageBtnContainer />} */}
-  </div>
   );
 };
 
-export default JobsCont
+export default JobsCont;
