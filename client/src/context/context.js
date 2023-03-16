@@ -31,6 +31,7 @@ import {
   GET_STATS_START,
   GET_STATS_SUCCESS,
   CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from "./actions";
 
 const user = localStorage.getItem("user");
@@ -232,9 +233,9 @@ const AppProvider = ({ children }) => {
   };
 
   const getJobs = async () => {
-    const { search, searchStatus, searchType, sort } = state;
+    const { page, search, searchStatus, searchType, sort } = state;
 
-    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
 
     if (search) {
       url = url + `&search=${search}`;
@@ -315,6 +316,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CLEAR_FILTERS });
   };
 
+  const changePage =(page) => {
+    dispatch({type: CHANGE_PAGE, payload: {page}})
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -334,6 +339,7 @@ const AppProvider = ({ children }) => {
         modifyJob,
         getStats,
         clearFilter,
+        changePage
       }}
     >
       {children}

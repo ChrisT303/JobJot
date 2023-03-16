@@ -1,14 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LandingImage from "../assets/images/LandingImage.svg";
-import { Logo } from '../components';
-
+import { Logo } from "../components";
 
 const LandingPage = () => {
   return (
     <main>
       <div className="mx-auto my-4">
         <nav className="flex mx-4 sm:mx-6 md:mx-8 items-center">
-        <Logo />
+          <Logo />
         </nav>
         <div
           className="min-h-screen flex justify-center items-center max-w-full"
@@ -24,9 +24,12 @@ const LandingPage = () => {
               aliquam laudantium, molestiae totam sed unde voluptatem magnam ea
               at iste rerum?
             </p>
-            <button className="btn btn-hero mt-4 bg-[#ffe26a] hover:bg-[#f7d13c] text-white rounded-md">
+            <Link
+              to="/register"
+              className="btn btn-hero mt-4 bg-[#ffe26a] hover:bg-[#f7d13c] text-white rounded-md"
+            >
               Login/Register
-            </button>
+            </Link>
           </div>
           <img
             src={LandingImage}

@@ -28,6 +28,7 @@ import {
   GET_STATS_START,
   GET_STATS_SUCCESS,
   CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -149,6 +150,7 @@ const reducer = (state, action) => {
   if (action.type === HANDLE_CHANGE) {
     return {
       ...state,
+      page: 1,
       [action.payload.name]: action.payload.value,
     };
   }
@@ -274,6 +276,12 @@ const reducer = (state, action) => {
       searchStatus: "All Jobs",
       searchType: "All Jobs",
       sort: "Most Recent",
+    };
+  }
+  if (action.type === CHANGE_PAGE) {
+    return {
+      ...state,
+      page: action.payload.page,
     };
   }
   throw new Error(`No action type provided: ${action.type}`);

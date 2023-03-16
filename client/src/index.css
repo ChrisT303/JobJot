@@ -285,6 +285,23 @@
   height: 300px; /* Default height for smaller screens */
 }
 
+.pageBtn {
+    background: transparent;
+    border-color: transparent;
+    width: 50px;
+    height: 40px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #627d98;
+    transition: 0.3s ease-in-out all;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  .active {
+    background: #627d98;
+    color: #fff;
+  }
+
 @media (min-width: 1024px) { /* Adjust the breakpoint value according to your design */
   .chart-container {
     height: 600px; /* Taller height for larger screens */

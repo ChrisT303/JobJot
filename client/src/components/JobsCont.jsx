@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../context/context";
 import LoadingSpinner from "./LoadingSpinner";
 import SingleJob from "./SingleJob";
+import BtnContPg from "./BtnContPg";
 
 const JobsCont = () => {
   const {
@@ -14,11 +15,12 @@ const JobsCont = () => {
     searchStatus,
     searchType,
     sort,
+    numOfPages,
   } = useGlobalContext();
 
   useEffect(() => {
     getJobs();
-  }, [search, searchStatus, searchType, sort]);
+  }, [page, search, searchStatus, searchType, sort]);
 
   if (isLoading) {
     return (
@@ -47,7 +49,7 @@ const JobsCont = () => {
           return <SingleJob key={job._id} {...job} />;
         })}
       </div>
-      {/* {numOfPages > 1 && <PageBtnContainer />} */}
+      {numOfPages > 1 && <BtnContPg />}
     </div>
   );
 };
