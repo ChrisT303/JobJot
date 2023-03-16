@@ -8,26 +8,26 @@ const Navigation = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { toggleSidebar, userLogout, user, showSidebar } = useGlobalContext();
 
-  const containerClassName = `h-24 lg:h-6rem flex items-center justify-between w-full md:sticky md:top-0 ${
+  const containerClassName = `h-24 lg:h-6rem flex items-center justify-between w-full md:sticky md:top-0  ${
     showSidebar ? "md:ml-sidebar" : "md:ml-0"
   }`;
 
   return (
     <div className={containerClassName}>
-      <div className="flex items-center w-90vw">
+      <div className="flex items-center w-90vw ">
         <button
           type="button"
-          className="bg-transparent border-transparent text-2xl text-[#2cb1bc] cursor-pointer flex items-center pr-2 mx-4"
+          className="bg-transparent border-transparent text-2xl text-[#2cb1bc] cursor-pointer flex items-center pr-2 mx-4 "
           onClick={toggleSidebar}
         >
           <BiAlignLeft />
         </button>
       </div>
-      <div className="md:hidden mx-4">
+      <div className="md:hidden mx-4 ">
         <Logo />
       </div>
       <div className="hidden md:block mx-4">
-        <h3 className="m-0 font-bold text-center">Dashboard</h3>
+        <h3 className="m-0 font-bold text-center text-3xl">Dashboard</h3>
       </div>
       <div className="relative">
         <button

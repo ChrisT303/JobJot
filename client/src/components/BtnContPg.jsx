@@ -27,14 +27,14 @@ const BtnContPg = () => {
   return (
     <div className="h-24 mt-8 lg:mt-0 flex items-center justify-end flex-wrap gap-4 lg:gap-8">
       <button
-        className="w-24 h-10 bg-white border-transparent rounded-md text-blue-600 capitalize flex items-center justify-center gap-2 cursor-pointer transition duration-300 hover:text-yellow-500 hover:bg-yellow-100 "
+        className="w-24 h-10 bg-white border-transparent rounded-md text-[#75C9B7] capitalize flex items-center justify-center gap-2 cursor-pointer transition duration-300 hover:text-yellow-500 hover:bg-yellow-100 "
         onClick={prevPage}
       >
         <HiChevronDoubleLeft />
         Prev
       </button>
 
-      <div className="bg-blue-100 rounded-md">
+      <div className="bg-[#abd699] rounded-md">
         {pages.map((pageNumber) => {
           return (
             <button
@@ -50,7 +50,7 @@ const BtnContPg = () => {
       </div>
 
       <button
-        className="w-24 h-10 bg-white border-transparent rounded-md text-blue-600 capitalize flex items-center justify-center gap-2 cursor-pointer transition duration-300 hover:text-yellow-500 hover:bg-yellow-100 "
+        className="w-24 h-10 bg-white border-transparent rounded-md text-[#75C9B7]  capitalize flex items-center justify-center gap-2 cursor-pointer transition duration-300 hover:text-yellow-500 hover:bg-yellow-100 "
         onClick={nextPage}
       >
         Next

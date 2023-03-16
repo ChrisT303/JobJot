@@ -19,10 +19,11 @@ const LandingPage = () => {
               App for<span className="text-[#abd699]"> Tracking</span> Job Apps
             </h1>
             <p className="text-[#777777] mt-4 text-center md:text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-              labore quas doloremque tempora dolores vitae eos architecto dolor
-              aliquam laudantium, molestiae totam sed unde voluptatem magnam ea
-              at iste rerum?
+          Welcome to our job tracking app! We know how overwhelming job applications can be, so we created a tool to help you stay organized and focused on your job search.  Whether you're a seasoned job seeker or just starting out, our app will help you stay on top of your game and land your dream job. Try it out today and take the first step towards your new career!
+
+
+
+
             </p>
             <Link
               to="/register"

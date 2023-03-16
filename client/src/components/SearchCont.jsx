@@ -29,7 +29,7 @@ const SearchCont = () => {
 
   return (
     <div className="container mx-auto my-8 px-4 lg:px-0 w-full lg:w-2/3">
-      <div className="bg-blue-200 rounded-md shadow-md p-4 lg:p-8 lg:py-6">
+      <div className="bg-[#C7DDCC] rounded-md shadow-md p-4 lg:p-8 lg:py-6">
         <h3 className="text-2xl text-center sm:text-left mb-4">Search Form</h3>
         <form className="grid grid-cols-1 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="col-span-1 mb-6 px-2">

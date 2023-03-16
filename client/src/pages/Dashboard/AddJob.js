@@ -41,7 +41,7 @@ const AddJob = () => {
   };
   return (
     <div className="container mx-auto my-8 px-4 lg:px-0 w-full lg:w-2/3">
-      <div className="bg-blue-200 rounded-md shadow-md p-4 lg:p-8 lg:py-6">
+      <div className="bg-[#C7DDCC]  rounded-md shadow-md p-4 lg:p-8 lg:py-6">
         <h3 className="text-2xl text-center sm:text-left mb-4">Add Job</h3>
         {showAlert && <AlertMessage />}
         <form

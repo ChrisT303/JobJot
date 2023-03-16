@@ -11,7 +11,7 @@ function ChartCont() {
     <div className="mt-16 text-center">
       <h4 className="text-center mb-3">Applications Per Month</h4>
       <button
-        className="bg-transparent border-transparent capitalize text-teal-500 text-lg cursor-pointer"
+        className="bg-transparent border-transparent capitalize text-[#75C9B7] text-lg cursor-pointer"
         type="button"
         onClick={() => setBarChart(!barChart)}
       >

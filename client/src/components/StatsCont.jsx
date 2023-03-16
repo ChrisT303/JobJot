@@ -25,9 +25,9 @@ const StatsCont = () => {
     {
       title: "Offer",
       count: stats.Offer || 0,
-      icon: <FaRegHandshake className="yellow" />,
-      color: "yellow",
-      bcg: "#f9e8d2"
+      icon: <FaRegHandshake className="green" />,
+      color: "green",
+      bcg: "#d6f4e6"
     },
     {
       title: "Declined",
