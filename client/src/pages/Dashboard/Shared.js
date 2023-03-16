@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Navigation, SideDrawer, MobileOverlay } from "../../components";
 
 const Shared = () => {
@@ -24,8 +24,3 @@ const Shared = () => {
 };
 
 export default Shared;
-
-
-
-
-

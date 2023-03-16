@@ -166,15 +166,7 @@ const AppProvider = ({ children }) => {
   };
 
   const toggleSidebar = () => {
-    console.log(
-      "toggleSidebar called before state update, showSidebar is",
-      state.showSidebar
-    );
     dispatch({ type: TOGGLE_SIDEBAR });
-    console.log(
-      "toggleSidebar called after state update, showSidebar is",
-      state.showSidebar
-    );
   };
 
   const handleChange = ({ value, name }) => {
@@ -250,8 +242,7 @@ const AppProvider = ({ children }) => {
         payload: { jobs, allJobs, numOfPages },
       });
     } catch (error) {
-      console.log(error.response);
-      // userLogout();
+      userLogout();
     }
     clearAlert();
   };
@@ -266,8 +257,7 @@ const AppProvider = ({ children }) => {
       await authFetch.delete(`/jobs/${job_id}`);
       getJobs();
     } catch (error) {
-      console.log(error.response);
-      // userLogout();
+      userLogout();
     }
   };
 
@@ -306,8 +296,7 @@ const AppProvider = ({ children }) => {
         },
       });
     } catch (error) {
-      console.log(error.response);
-      // userLogout();
+      userLogout();
     }
     clearAlert();
   };
@@ -316,9 +305,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CLEAR_FILTERS });
   };
 
-  const changePage =(page) => {
-    dispatch({type: CHANGE_PAGE, payload: {page}})
-  }
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
 
   return (
     <GlobalContext.Provider
@@ -339,7 +328,7 @@ const AppProvider = ({ children }) => {
         modifyJob,
         getStats,
         clearFilter,
-        changePage
+        changePage,
       }}
     >
       {children}

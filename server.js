@@ -5,6 +5,10 @@ const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
 import connectDB from "./db/connection.js";
 
 import authRoutes from "./routes/authRoutes.js";
@@ -18,14 +22,16 @@ if (process.env.NODE_ENV !== "development") {
   app.use(morgan("dev"));
 }
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+app.use(express.static(path.resolve(__dirname, './client/build')))
 app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/jobs", authUser, jobsRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
