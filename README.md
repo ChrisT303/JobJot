@@ -12,9 +12,9 @@ To get started with the application, follow these steps:
 3. Create a .env file in the root directory and set the following environment variables:
 
 
-* `MONGODB_URI=<your MongoDB connection string>`
+* `MONGODB_URL=<your MongoDB connection string>`
 * `JWT_SECRET=<a secret key for JSON Web Tokens>`
-* `JWT_LIFETIME=<Your time limit>`
+* `JWT_EXPIRE=<Your time limit>`
 
 4. Start the server by running npm run server in the root directory.
 
@@ -46,3 +46,6 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 
 ## Contact
 If you have any questions or comments about the project, please contact me at chriswillthedev@egmail.com.
+
+## Link to App
+[JobJot](https://jobjot.onrender.com/)
