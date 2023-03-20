@@ -47,5 +47,8 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ## Contact
 If you have any questions or comments about the project, please contact me at chriswillthedev@egmail.com.
 
+## Demo
+https://watch.screencastify.com/v/KaVjnXhZ8AMI0pu5n34e
+
 ## Link to App
 [JobJot](https://jobjot.onrender.com/)
