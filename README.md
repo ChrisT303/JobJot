@@ -38,7 +38,7 @@ The following technologies were used to build the application:
 
 ## License
 
-/github/license/:user/:repo
+![GitHub](https://img.shields.io/github/license/deftonechris/MyLabRetriever?color=Green&label=MIT&logo=License&logoColor=License&style=plastic)
 
 ## Contributing
 
