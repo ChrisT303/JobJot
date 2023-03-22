@@ -38,7 +38,7 @@ The following technologies were used to build the application:
 
 ## License
 
-https://img.shields.io/badge/MIT-License-brightgreen
+/github/license/:user/:repo
 
 ## Contributing
 
