@@ -45,7 +45,7 @@ The following technologies were used to build the application:
 Contributions are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository. If you want to contribute code, please fork the repository and submit a pull request.
 
 ## Contact
-If you have any questions or comments about the project, please contact me at chriswillthedev@egmail.com.
+If you have any questions or comments about the project, please contact me at chriswillthedev@gmail.com.
 
 ## Demo
 [Screencast](https://watch.screencastify.com/v/KaVjnXhZ8AMI0pu5n34e)
