@@ -1,12 +1,11 @@
 # JobJot
 
 This is a job search tracker application built with the MERN (MongoDB, Express, React, Node.js) stack. The application allows users to track their job search progress, including job applications, interviews, and job offers.
-![JobJot-SS1](https://user-images.githubusercontent.com/103149149/233178458-134ca202-bfe7-4625-8d3c-f7302ae6c364.png)
+![JobJot-SS1](https://user-images.githubusercontent.com/103149149/233178458-134ca202-bfe7-4625-8d3c-f7302ae6c364.png)<br><br>
 
-![JobJob-SS3](https://user-images.githubusercontent.com/103149149/233178509-f0651381-0f03-40af-96ea-4476c585b804.png)
+![JobJob-SS3](https://user-images.githubusercontent.com/103149149/233178509-f0651381-0f03-40af-96ea-4476c585b804.png)<br><br>
 
 
-![JobJot-SS2](https://user-images.githubusercontent.com/103149149/233178545-7c8ac3b5-fbd3-43c3-b2aa-2b07ec3a6dd2.png)
 
 
 
